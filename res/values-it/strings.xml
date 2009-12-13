@@ -474,7 +474,7 @@
     <string name="dtmfDialpadHintText" msgid="2153335217920679451">"Selezione a toni"</string>
     <string name="dtmfDialpadHandleLabel" msgid="6077872154488117962">"Tastierino"</string>
     <string name="touchLockText" msgid="8742463586429019112">"Tocca due volte"\n"per sbloccare"</string>
-    <string name="onscreenAnswerText" msgid="7643040500342720792">"Tocca due volte"\n"per rispondere"</string>
+    <string name="onscreenAnswerText" msgid="7643040500342720792">"Rispondi"</string>
     <string name="importSimEntry" msgid="6614358325359736031">"Importa"</string>
     <string name="importAllSimEntries" msgid="1503181169636198673">"Importa tutti"</string>
     <string name="importingSimContacts" msgid="7374056215462575769">"Importazione contatti SIM"</string>

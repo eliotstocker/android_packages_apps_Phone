@@ -712,7 +712,7 @@ mOrganization = (TextView) findViewById(R.id.organization);
                // as the Foreground Call state still remains ACTIVE
                if (mApplication.cdmaPhoneCallState.IsThreeWayCallOrigStateDialing()) {
                     // Use the "upper title":
-                    mUpperTitle.setText(cardTitle);
+            	   mUpperTitle.setText(cardTitle);
                     mLowerTitleViewGroup.setVisibility(View.INVISIBLE);
                } else {
                     // Use the "lower title" (in green).
@@ -731,6 +731,8 @@ mOrganization = (TextView) findViewById(R.id.organization);
                 mLowerTitle.setTextColor(textColor);
                 mElapsedTime.setTextColor(textColor);
                 setUpperTitle("");
+// XENIO modifica
+mUpperTitle.setVisibility(View.INVISIBLE);
             }
         } else if (state == Call.State.DISCONNECTED) {
             // Use the "lower title" (in red).
@@ -746,9 +748,14 @@ mOrganization = (TextView) findViewById(R.id.organization);
             mLowerTitle.setTextColor(mTextColorEnded);
             mElapsedTime.setTextColor(mTextColorEnded);
             setUpperTitle("");
+// XENIO modifica
+mUpperTitle.setVisibility(View.INVISIBLE);
+
         } else {
             // All other states (DIALING, INCOMING, etc.) use the "upper title":
-            setUpperTitle(cardTitle, state);
+// XENIO modifica
+mUpperTitle.setVisibility(View.VISIBLE);
+        	setUpperTitle(cardTitle, state);
             mLowerTitleViewGroup.setVisibility(View.INVISIBLE);
         }
 

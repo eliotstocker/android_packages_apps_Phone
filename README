@@ -1,4 +1,13 @@
-This is modified Phone app base on aosp.
+This is modified Phone app base on aosp/cytown
 
-by cytown@gmail.com
 
+v22 changelog | tweak by Xenio (forbesmultimedia@gmail.com)
+-----------------------------------------------------------
+New Eclair background
+250px Contact Photo size
+On screen "answer" button
+No dialpad button (it is not removed, just invisible)
+No Callinfo on screen
+
+
+this is a git test... do not fork or download.

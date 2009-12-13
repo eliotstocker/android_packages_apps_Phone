@@ -3405,7 +3405,7 @@ case R.id.menuAddBlackList:
         if (DBG) log("initOnscreenAnswerUi: device '" + SystemProperties.get("ro.product.device")
                      + "', allowOnscreenAnswerUi = " + allowOnscreenAnswerUi);
 
-        if (allowOnscreenAnswerUi) {
+        if (!allowOnscreenAnswerUi) {
             ViewStub stub = (ViewStub) findViewById(R.id.onscreenAnswerUiStub);
             mOnscreenAnswerUiContainer = stub.inflate();
 
@@ -4031,8 +4031,10 @@ case R.id.menuAddBlackList:
                 if (DBG) log("- onscreen answer button: handling a DOWN event, t = " + now);  // foo -- VDBG
 
                 // Look for the double-tap gesture:
-                if (now < mOnscreenAnswerButtonLastTouchTime + ViewConfiguration.getDoubleTapTimeout()) {
-                    if (DBG) log("==> onscreen answer button: DOUBLE-TAP!");
+//                if (now < mOnscreenAnswerButtonLastTouchTime + ViewConfiguration.getDoubleTapTimeout()) {
+                if (now > mOnscreenAnswerButtonLastTouchTime) {
+
+                if (DBG) log("==> onscreen answer button: DOUBLE-TAP!");
                     // This was the 2nd tap of the double-tap gesture: answer the call!
 
                     final boolean hasRingingCall = !mRingingCall.isIdle();

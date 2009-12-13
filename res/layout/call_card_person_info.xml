@@ -36,8 +36,8 @@
          you see the white border *and* lots of gray space around the
          photo...  Need to confirm this is OK. -->
     <ImageView android:id="@+id/photo"
-               android:layout_width="164px"
-               android:layout_height="164px"
+               android:layout_width="250px"
+               android:layout_height="250px"
                android:scaleType="fitXY"
                android:background="@drawable/incall_photo_border"
                />
