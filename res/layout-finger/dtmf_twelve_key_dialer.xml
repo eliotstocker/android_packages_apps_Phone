@@ -57,7 +57,9 @@
             android:shadowRadius="0.9"
             android:shadowColor="#ffffffff"
             android:duplicateParentState="true"
-            android:background="@drawable/tray_handle_tab"/>
+            android:background="@drawable/tray_handle_tab"
+android:visibility="gone"
+            />
         <ImageView
             android:layout_width="1dip"
             android:layout_height="wrap_content"

@@ -188,7 +188,7 @@
         </receiver>
 
         <activity android:name="InCallScreen"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
             android:label="@string/phoneIconLabel"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
