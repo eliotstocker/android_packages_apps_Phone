@@ -893,6 +893,10 @@
          they need to double-tap to answer the incoming call. -->
     <string name="onscreenAnswerText">Answer</string>
 
+    <!-- Text for the onscreen "Deny" button, instructing the user that
+         they need to double-tap to answer the incoming call. -->
+    <string name="onscreenDenyText">Dismiss</string>
+
     <!-- Menu item label in SIM Contacts: Import a single contact entry from the SIM card -->
     <string name="importSimEntry">Import</string>
     <!-- Menu item label in SIM Contacts: Import all contact entries from the SIM card -->

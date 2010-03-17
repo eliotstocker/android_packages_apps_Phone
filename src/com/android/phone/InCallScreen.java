@@ -234,6 +234,12 @@ public class InCallScreen extends Activity
     private View mOnscreenAnswerUiContainer;  // The container for the whole UI, or null if unused
     private View mOnscreenAnswerButton;  // The "answer" button itself
     private long mOnscreenAnswerButtonLastTouchTime;  // in SystemClock.uptimeMillis() time base
+    private View mOnscreenAnswerButton2;  // The "answer" button itself
+    private long mOnscreenAnswerButton2LastTouchTime;  // in SystemClock.uptimeMillis() time base
+
+    // Onscreen "Deny" UI, for devices with no hardware CALL button.
+    private View mOnscreenDenyButton;  // The "Deny" button itself
+    private long mOnscreenDenyButtonLastTouchTime;  // in SystemClock.uptimeMillis() time base
 
     // Various dialogs we bring up (see dismissAllDialogs())
     // The MMI started dialog can actually be one of 2 items:
@@ -3411,6 +3417,12 @@ case R.id.menuAddBlackList:
 
             mOnscreenAnswerButton = findViewById(R.id.onscreenAnswerButton);
             mOnscreenAnswerButton.setOnTouchListener(this);
+
+            mOnscreenAnswerButton2 = findViewById(R.id.onscreenAnswerButton2);
+            mOnscreenAnswerButton2.setOnTouchListener(this);
+
+            mOnscreenDenyButton = findViewById(R.id.onscreenDenyButton);
+            mOnscreenDenyButton.setOnTouchListener(this);
         }
     }
 
@@ -4067,6 +4079,123 @@ case R.id.menuAddBlackList:
                 // tap of a double-tap gesture.  (We measure the time from
                 // the first tap's UP to the second tap's DOWN.)
                 mOnscreenAnswerButtonLastTouchTime = SystemClock.uptimeMillis();
+            }
+
+            // And regardless of what just happened, we *always*
+            // consume touch events to this button.
+            return true;
+
+// add second answer button
+
+        // Handle touch events on the onscreen "answer" button.
+        } else if (v == mOnscreenAnswerButton2) {
+
+            // TODO: this "double-tap detection" code is also duplicated
+            // above (for mTouchLockIcon).  Instead, extract it out to a
+            // helper class that can listen for double-taps on an
+            // arbitrary View, or maybe even a whole new "DoubleTapButton"
+            // widget.
+
+            // Look for the double-tap gesture.
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                long now = SystemClock.uptimeMillis();
+                if (DBG) log("- onscreen answer button2: handling a DOWN event, t = " + now);  // foo -- VDBG
+
+                // Look for the double-tap gesture:
+//                if (now < mOnscreenAnswerButtonLastTouchTime + ViewConfiguration.getDoubleTapTimeout()) {
+                if (now > mOnscreenAnswerButton2LastTouchTime) {
+
+                if (DBG) log("==> onscreen answer button2: DOUBLE-TAP!");
+                    // This was the 2nd tap of the double-tap gesture: answer the call!
+
+                    final boolean hasRingingCall = !mRingingCall.isIdle();
+                    if (hasRingingCall) {
+                        final boolean hasActiveCall = !mForegroundCall.isIdle();
+                        final boolean hasHoldingCall = !mBackgroundCall.isIdle();
+                        if (hasActiveCall && hasHoldingCall) {
+                            if (DBG) log("onscreen answer button2: ringing (both lines in use) ==> answer!");
+                            internalAnswerCallBothLinesInUse();
+                        } else {
+                            if (DBG) log("onscreen answer button2: ringing ==> answer!");
+                            internalAnswerCall();  // Automatically holds the current active call,
+                                                   // if there is one
+                        }
+                    } else {
+                        // The ringing call presumably stopped just when
+                        // the user was double-tapping.
+                        if (DBG) log("onscreen answer button2: no ringing call (any more); ignoring...");
+                    }
+                }
+                // The onscreen "answer" button will go away as soon as
+                // the phone goes from ringing to offhook, since that
+                // state change will trigger an updateScreen() call.
+                // TODO: consider explicitly starting some fancier
+                // animation here, like fading out the "answer" button, or
+                // sliding it offscreen...
+
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                // Stash away the current time in case this is the first
+                // tap of a double-tap gesture.  (We measure the time from
+                // the first tap's UP to the second tap's DOWN.)
+                mOnscreenAnswerButton2LastTouchTime = SystemClock.uptimeMillis();
+            }
+
+            // And regardless of what just happened, we *always*
+            // consume touch events to this button.
+            return true;
+
+//add deny/dismiss button
+
+        // Handle touch events on the onscreen "deny" button.
+        } else if (v == mOnscreenDenyButton) {
+
+            // TODO: this "double-tap detection" code is also duplicated
+            // above (for mTouchLockIcon).  Instead, extract it out to a
+            // helper class that can listen for double-taps on an
+            // arbitrary View, or maybe even a whole new "DoubleTapButton"
+            // widget.
+
+            // Look for the double-tap gesture.
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                long now = SystemClock.uptimeMillis();
+                if (DBG) log("- onscreen deny button: handling a DOWN event, t = " + now);  // foo -- VDBG
+
+                // Look for the double-tap gesture:
+//                if (now < mOnscreenDenyButtonLastTouchTime + ViewConfiguration.getDoubleTapTimeout()) {
+                if (now > mOnscreenDenyButtonLastTouchTime) {
+
+                if (DBG) log("==> onscreen deny button: DOUBLE-TAP!");
+                    // This was the 2nd tap of the double-tap gesture: answer the call!
+
+                    final boolean hasRingingCall = !mRingingCall.isIdle();
+                    if (hasRingingCall) {
+                        final boolean hasActiveCall = !mForegroundCall.isIdle();
+                        final boolean hasHoldingCall = !mBackgroundCall.isIdle();
+                        if (hasActiveCall && hasHoldingCall) {
+                            if (DBG) log("onscreen deny button: ringing (both lines in use) ==> answer!");
+                            PhoneUtils.hangup(mPhone);
+                        } else {
+                            if (DBG) log("onscreen deny button: ringing ==> answer!");
+                            PhoneUtils.hangup(mPhone);
+                        }
+                    } else {
+                        // The ringing call presumably stopped just when
+                        // the user was double-tapping.
+                        if (DBG) log("onscreen deny button: no ringing call (any more); ignoring...");
+                    }
+                }
+                // The onscreen "answer" button will go away as soon as
+                // the phone goes from ringing to offhook, since that
+                // state change will trigger an updateScreen() call.
+                // TODO: consider explicitly starting some fancier
+                // animation here, like fading out the "answer" button, or
+                // sliding it offscreen...
+
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                // Stash away the current time in case this is the first
+                // tap of a double-tap gesture.  (We measure the time from
+                // the first tap's UP to the second tap's DOWN.)
+                mOnscreenDenyButtonLastTouchTime = SystemClock.uptimeMillis();
             }
 
             // And regardless of what just happened, we *always*

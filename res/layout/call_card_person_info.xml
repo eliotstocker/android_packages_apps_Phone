@@ -25,6 +25,13 @@
               android:layout_height="wrap_content"
               >
 
+<!-- Place holder to add some space above the contact image -->
+
+	    <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dip"
+        android:layout_weight="1" />
+			  
     <!-- Photo, or else a generic placeholder image. -->
     <!-- Contact photos are generally 96x96 (but may be smaller.)
          The layout size of this ImageView is larger than that, though,
@@ -36,8 +43,8 @@
          you see the white border *and* lots of gray space around the
          photo...  Need to confirm this is OK. -->
     <ImageView android:id="@+id/photo"
-               android:layout_width="250px"
-               android:layout_height="250px"
+               android:layout_width="164px"
+               android:layout_height="164px"
                android:scaleType="fitXY"
                android:background="@drawable/incall_photo_border"
                />
@@ -46,13 +53,13 @@
          if there's enough room. -->
     <View
         android:layout_width="fill_parent"
-        android:layout_height="1dip"
+        android:layout_height="15dip"
         android:layout_weight="1" />
 
     <!-- Name (or the phone number, if we don't have a name to display). -->
     <TextView android:id="@+id/name"
               android:gravity="center_horizontal"
-              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:textColor="#ffffffff"
               android:textSize="28sp"
               android:singleLine="true"
               android:layout_width="wrap_content"
@@ -64,7 +71,7 @@
     <!-- Organization, if we set it shown. -->
     <TextView android:id="@+id/organization"
               android:gravity="center_horizontal"
-              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="#ffffffff"
               android:textSize="20sp"
               android:singleLine="true"
               android:layout_width="wrap_content"
@@ -85,7 +92,7 @@
         <TextView android:id="@+id/label"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textSize="18sp"
-                  android:textColor="?android:attr/textColorSecondary"
+                  android:textColor="#ffffffff"
                   android:singleLine="true"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -94,7 +101,7 @@
         <TextView android:id="@+id/phoneNumber"
                   android:textAppearance="?android:attr/textAppearanceSmall"
                   android:textSize="18sp"
-                  android:textColor="?android:attr/textColorSecondary"
+                  android:textColor="#ffffffff"
                   android:singleLine="true"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"

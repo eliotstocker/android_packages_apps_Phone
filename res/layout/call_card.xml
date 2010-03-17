@@ -52,6 +52,21 @@
         android:minHeight="300dip"
         >
 
+        <!-- "Upper title" at the very top of the CallCard. -->
+        <TextView android:id="@+id/upperTitle"
+        android:paddingTop="4dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff"
+        android:textSize="26sp"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dip"
+	android:paddingBottom="0dip"
+                   />
+
         <!-- Placeholder to  add some space between the title and "person info" area if
              there's enough room. -->
         <View
@@ -68,20 +83,6 @@
             android:layout_width="fill_parent"
             android:layout_height="5dip"
             android:layout_weight="1" />
-
-        <!-- "Upper title" at the very top of the CallCard. -->
-        <TextView android:id="@+id/upperTitle"
-                  android:paddingTop="4dip"
-                  android:paddingLeft="10dip"
-                  android:paddingRight="10dip"
-                  android:textAppearance="?android:attr/textAppearanceLarge"
-                  android:textSize="26sp"
-                  android:singleLine="true"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="0dip"
-android:paddingBottom="0dip"
-                   />
 
 <!-- android:background="@drawable/btn_dial_normal" -->
 
@@ -106,7 +107,7 @@ android:paddingBottom="0dip"
                        android:layout_marginRight="8dip"
                 />
             <TextView android:id="@+id/lowerTitle"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
+                      android:textColor="#ffffffff"
                       android:textSize="18sp"
                       android:singleLine="true"
                       android:layout_width="wrap_content"
@@ -115,7 +116,7 @@ android:paddingBottom="0dip"
                       android:gravity="left"
                       />
             <TextView android:id="@+id/elapsedTime"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
+                      android:textColor="#ffffffff"
                       android:textSize="18sp"
                       android:singleLine="true"
                       android:layout_width="wrap_content"
@@ -159,7 +160,7 @@ android:paddingBottom="0dip"
             android:src="@drawable/ic_incall_ongoing"
             />
         <TextView android:id="@+id/otherCallOngoingName"
-              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="#ffffffff"
               android:textSize="18sp"
               android:singleLine="true"
               android:layout_width="wrap_content"
@@ -169,7 +170,7 @@ android:paddingBottom="0dip"
               />
         <TextView android:id="@+id/otherCallOngoingStatus"
               android:text="@string/ongoing"
-              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="#ffffffff"
               android:textSize="18sp"
               android:singleLine="true"
               android:layout_marginRight="6dip"
@@ -194,7 +195,7 @@ android:paddingBottom="0dip"
             android:src="@drawable/ic_incall_onhold"
             />
         <TextView android:id="@+id/otherCallOnHoldName"
-              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="#ffffffff"
               android:textSize="18sp"
               android:singleLine="true"
               android:layout_width="wrap_content"
@@ -204,7 +205,7 @@ android:paddingBottom="0dip"
               />
         <TextView android:id="@+id/otherCallOnHoldStatus"
               android:text="@string/onHold"
-              android:textAppearance="?android:attr/textAppearanceMedium"
+              android:textColor="#ffffffff"
               android:textSize="18sp"
               android:singleLine="true"
               android:layout_marginRight="6dip"

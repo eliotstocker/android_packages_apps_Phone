@@ -1,12 +1,10 @@
-This is modified Phone app base on aosp/cytown
+This is modified Phone app base on aosp/cytown tweaked by Xenio
 
 
-v23 changelog | tweak by Xenio (forbesmultimedia@gmail.com)
+
+changelog | tweak by Eliot Stocker (eliot.stocker@gmail.com)
 -----------------------------------------------------------
-New Custom Background
-250px Contact Photo size
-On screen "answer" button
-No dialpad button (it is not removed, just invisible)
-!!Warning No Call waiting info on screen!!
 
-
+added a second answer button over cotact pic
+added a dismis call button
+made it look like stock
